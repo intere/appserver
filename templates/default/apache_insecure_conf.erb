@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+
+  ServerAdmin ops@example.com
+  DocumentRoot /vagrant/web/insecure
+  <Directory />
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    allow from all
+  </Directory>
+
+  ErrorLog /var/log/httpd/insecure-error.log
+  LogLevel warn
+  CustomLog /var/log/httpd/insecure-access.log combined
+  ServerSignature On
+</VirtualHost>
+
