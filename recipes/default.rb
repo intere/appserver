@@ -8,6 +8,9 @@
 #
 include_recipe "apache2"
 include_recipe "apache2::mod_ssl"
+include_recipe "java"
+include_recipe "tomcat"
+include_recipe "mongodb::default"
 
 package "mod_ssl" do
   action :install
@@ -42,3 +45,4 @@ web_app 'secure' do
   template 'apache_secure_conf.erb'
 end
 
+# include_recipe "appserver::nzbperl"
