@@ -6,11 +6,14 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+
 include_recipe "apache2"
 include_recipe "apache2::mod_ssl"
+include_recipe "apache2::mod_proxy"
 include_recipe "java"
 include_recipe "tomcat"
 include_recipe "mongodb::default"
+include_recipe "jenkins::master"
 
 package "mod_ssl" do
   action :install
@@ -44,5 +47,9 @@ web_app 'secure' do
   server_name node['hostname']
   template 'apache_secure_conf.erb'
 end
+
+execute "/usr/sbin/a2enmod proxy_http"
+
+execute "service iptables stop"
 
 # include_recipe "appserver::nzbperl"
