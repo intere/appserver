@@ -10,8 +10,8 @@
 include_recipe "appserver::jenkins"
 include_recipe "appserver::apache"
 include_recipe "appserver::tomcat"
+include_recipe "appserver::mongo"
 
-include_recipe "mongodb::default"
 include_recipe "maven::default"
 
 
