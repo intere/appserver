@@ -3,9 +3,6 @@
   SSLCertificateKeyFile /etc/httpd/ssl/server.key
   SSLEngine on
 
-  ProxyPreserveHost On
-  ProxyRequests Off
-
   ServerAdmin ops@example.com
   DocumentRoot /vagrant/web/secure
 
@@ -16,14 +13,19 @@
     allow from all
   </Directory>
 
-  <Proxy http://127.0.0.1:8081>
+  ProxyPreserveHost On
+  ProxyRequests Off
+  AllowEncodedSlashes On
+
+  <Proxy http://127.0.0.1:8081/jenkins*>
      Order allow,deny
      Allow from all
   </Proxy>
 
-  ProxyPass /jenkins http://127.0.0.1:8081/jenkins
+  ProxyPass /jenkins http://127.0.0.1:8081/jenkins nocanon
   ProxyPassReverse /jenkins http://127.0.0.1:8081/jenkins
-  ProxyRequests     Off
+  RequestHeader set X-Forwarded-Proto "https"
+  RequestHeader set X-Forwarded-Port "443"
 
   ErrorLog /var/log/httpd/secure-error.log
   LogLevel warn
