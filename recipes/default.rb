@@ -7,6 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe "appserver::grunt_build"
 include_recipe "appserver::jenkins"
 include_recipe "appserver::apache"
 include_recipe "appserver::tomcat"
