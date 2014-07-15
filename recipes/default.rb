@@ -12,6 +12,7 @@ include_recipe "appserver::tomcat"
 
 include_recipe "mongodb::default"
 include_recipe "jenkins::master"
+include_recipe "maven::default"
 
 package "git" do
   action :install
