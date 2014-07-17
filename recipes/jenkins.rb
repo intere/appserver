@@ -8,6 +8,9 @@ package "git" do
   action :install
 end
 
+package "redis" do
+  action :install
+end
 
 execute "allow jenkins shell access" do
   command "mkdir /home/jenkins"
@@ -16,3 +19,12 @@ execute "allow jenkins shell access" do
   command "usermod --home /home/jenkins --shell /bin/bash jenkins"
   action :run
 end
+
+execute "/usr/bin/git clone git@github.com:intere/hubot.git" do
+  cwd '/home/jenkins'
+  user 'jenkins'
+  not_if { ::File.exists?('/home/jenkins/hubot') }
+end
+
+execute "/usr/local/bin/npm install -g hubot coffee-script hubot-irc"
+execute "/home/jenkins/hubot/hubot.sh"
