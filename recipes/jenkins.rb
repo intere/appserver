@@ -25,6 +25,10 @@ execute "/usr/bin/git clone git@github.com:intere/hubot.git" do
   user 'jenkins'
   not_if { ::File.exists?('/home/jenkins/hubot') }
 end
+execute "/usr/bin/git checkout vagrant" do
+  cwd '/home/jenkins/hubot'
+  user 'jenkins'
+end
 
 execute "/usr/local/bin/npm install -g hubot coffee-script hubot-irc"
 execute "/home/jenkins/hubot/hubot.sh"
