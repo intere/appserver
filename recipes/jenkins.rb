@@ -25,6 +25,7 @@ execute "/usr/bin/git clone git@github.com:intere/hubot.git" do
   user 'jenkins'
   not_if { ::File.exists?('/home/jenkins/hubot') }
 end
+
 execute "/usr/bin/git checkout vagrant" do
   cwd '/home/jenkins/hubot'
   user 'jenkins'
