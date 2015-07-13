@@ -11,10 +11,6 @@ describe 'appserver::default' do
       expect(chef_run.node['java']['oracle']['accept_oracle_download_terms']).to be_truthy
     end
 
-    it 'does set the tomcat version to 7' do
-      expect(chef_run.node['tomcat']['base_version']).to eq 7
-    end
-
     it 'does set the jenkins port to run on port 8081' do
       expect(chef_run.node['jenkins']['master']['port']).to eq 8081
     end
@@ -26,17 +22,22 @@ describe 'appserver::default' do
     end
   end
 
+  context 'Include Recipes' do
+    it 'does include java' do
+      expect(chef_run).to include_recipe('java')
+    end
 
-  it 'does include java' do
-    expect(chef_run).to include_recipe('java')
-  end
+    it 'does include maven' do
+      expect(chef_run).to include_recipe('maven')
+    end
 
-  it 'does include tomcat' do
-    expect(chef_run).to include_recipe('tomcat')
-  end
+    it 'does include tomcat' do
+      expect(chef_run).to include_recipe('tomcat')
+    end
 
-  it 'does include jenkins' do
-    expect(chef_run).to include_recipe('jenkins::master')
+    it 'does include jenkins' do
+      expect(chef_run).to include_recipe('jenkins::master')
+    end
   end
 
 end

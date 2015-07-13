@@ -3,9 +3,13 @@ appserver CHANGELOG
 
 This file is used to list changes made in each version of the appserver cookbook.
 
-0.1.0
+0.0.2
 -----
-- [your_name] - Initial release of appserver
+- Eric - Added Maven to the default recipes
+
+0.0.1
+-----
+- Eric - Initial release of appserver, installs Java, Tomcat, Jenkins
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

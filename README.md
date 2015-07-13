@@ -8,11 +8,14 @@ Currently this cookbook only seems to work on Debian Systems (tested on Ubuntu-1
 
 e.g.
 #### packages
-- `toaster` - appserver needs toaster to brown your bagel.
+- `java` - appserver needs java to run / build apps
+- `tomcat` - appserver needs tomcat to run your apps
+- `maven` - appserver needs maven to build your apps
+- `jenkins` - appserver needs jenkins to CI your code
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
+N/A: It's all stock for now.
 
 e.g.
 #### appserver::default

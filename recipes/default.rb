@@ -14,5 +14,6 @@ end
 
 # Install Java, Tomcat and Jenkins
 include_recipe 'java'
+include_recipe 'maven'
 include_recipe 'tomcat'
 include_recipe "jenkins::master"
